@@ -75,7 +75,7 @@ public interface RetrofitHttpClient {
     Observable<UpMovieBackResult> upTodayUpdata(@Query("date") String date,@Query("movie") String movie,@Query("cha_tv") String cha_tv,@Query("rihan_tv") String rihan_tv,@Query("usa_tv") String usa_tv);
 
 
-    @POST("/BaiDuDataUp/GetTodayDate")
+    @GET("/BaiDuDataUp/GetTodayDate")
     Observable<ToadyBean> getTodayUpdata();
 
 }

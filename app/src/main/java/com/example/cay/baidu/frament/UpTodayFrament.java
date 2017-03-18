@@ -60,19 +60,16 @@ public class UpTodayFrament extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mButton.setOnClickListener(new View.OnClickListener() {
+
+        mLoad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 取得系统日期:
-                Calendar c = Calendar.getInstance();
-                final int month = c.get(Calendar.MONTH) + 1;
-                final int day = c.get(Calendar.DAY_OF_MONTH);
                 HttpUtils.getInstance().upMovieDetails().getTodayUpdata().subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new Observer<ToadyBean>() {
                             @Override
                             public void onSubscribe(Disposable d) {
-
+                                Log.i(TAG, "onSubscribe: ");
                             }
 
                             @Override
@@ -86,14 +83,23 @@ public class UpTodayFrament extends Fragment {
 
                             @Override
                             public void onError(Throwable e) {
-
+                                Toast.makeText(getContext(), "出现错误", Toast.LENGTH_LONG).show();
                             }
 
                             @Override
                             public void onComplete() {
-
+                                Log.i(TAG, "onComplete: ");
                             }
                         });
+            }
+        });
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 取得系统日期:
+                Calendar c = Calendar.getInstance();
+                final int month = c.get(Calendar.MONTH) + 1;
+                final int day = c.get(Calendar.DAY_OF_MONTH);
                 String date = month + "月" + day + "日";
                 String movie = movieEditText.getText().toString().trim();
                 String chaTv = chaEditText.getText().toString().trim();

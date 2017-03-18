@@ -36,11 +36,18 @@ public class ToadyBean {
 	public void setDate(String date) {
 		this.date = date;
 	}
+
 	@Override
 	public String toString() {
-		return "ToadyBean [rihan_tv=" + rihan_tv + ", usa_tv=" + usa_tv + ", cha_tv=" + cha_tv + ", movie=" + movie
-				+ ", date=" + date + "]";
+		return "ToadyBean{" +
+				"rihan_tv='" + rihan_tv + '\'' +
+				", usa_tv='" + usa_tv + '\'' +
+				", cha_tv='" + cha_tv + '\'' +
+				", movie='" + movie + '\'' +
+				", date='" + date + '\'' +
+				'}';
 	}
+}
 	
 
-}
+
